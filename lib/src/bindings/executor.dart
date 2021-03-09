@@ -2,7 +2,7 @@ import 'dart:cli' as cli;
 import 'dart:ffi' as ffi;
 import 'dart:isolate' show Isolate;
 
-import 'package:ffi/ffi.dart' show Utf8;
+import 'package:ffi/ffi.dart' show Utf8, StringUtf8Pointer;
 
 import 'package:derry/src/bindings/get_object.dart';
 
@@ -24,6 +24,6 @@ int executor(String input) {
       dylib.lookup<ffi.NativeFunction<_executor_fn>>('executor');
   final executorFunction = executorPointer.asFunction<_Executor>();
 
-  final script = Utf8.toUtf8(input).cast<Utf8>();
+  final script = input.toNativeUtf8().cast<Utf8>();
   return executorFunction(script);
 }
