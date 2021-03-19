@@ -12,11 +12,11 @@ class DerryError extends Equatable {
   });
 
   /// Type of error.
-  final ErrorType type;
+  final ErrorType? type;
 
   /// Body message of the error.
-  final Map<String, dynamic> body;
+  final Map<String, dynamic>? body;
 
   @override
-  List<Object> get props => [type, body];
+  List<Object?> get props => [type, body];
 }

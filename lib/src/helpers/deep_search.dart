@@ -3,7 +3,7 @@ import 'package:derry/helpers.dart';
 import 'package:derry/models.dart';
 
 /// Searches for a key in the definitions.
-dynamic search(Map data, String key) {
+dynamic search(Map? data, String key) {
   var d = data;
   final current = StringBuffer();
   final keyPieces = key.split(' ');
@@ -17,7 +17,7 @@ dynamic search(Map data, String key) {
       if (i == keyPieces.length - 1) {
         return d[k];
       } else if (d[k] is Map) {
-        d = d[k] as Map;
+        d = d[k] as Map?;
       } else {
         throw DerryError(
           type: ErrorType.snf,

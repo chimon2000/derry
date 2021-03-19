@@ -24,7 +24,7 @@ class ListCommand extends Command {
   Future<void> run() async {
     final info = await loadInfo();
     final infoLine = '+ ${info.name}@${info.version}';
-    final definitions = await loadDefinitions();
+    final definitions = await (loadDefinitions() as FutureOr<Map<dynamic, dynamic>>);
     final keys = makeKeys(definitions)..sort();
 
     final mapping = Map.fromEntries(
@@ -40,7 +40,7 @@ class ListCommand extends Command {
           .map(
             (entry) => MapEntry(
               entry.key,
-              entry.value.scripts.where((s) => s.startsWith('\$')).toList(),
+              entry.value.scripts!.where((s) => s.startsWith('\$')).toList(),
             ),
           ),
     );
@@ -51,7 +51,7 @@ class ListCommand extends Command {
     for (final entry in keys.asMap().entries) {
       final i = entry.key;
       final value = entry.value;
-      final subcommands = mapping[entry.key];
+      final subcommands = mapping[entry.key]!;
 
       stdout.writeln('${_getPrefix(i, keys.length)} $value');
 

@@ -35,7 +35,7 @@ Future<int> executeDerry(List<String> arguments) async {
   } else {
     try {
       final exitCode = await runner.run(arguments);
-      return exitCode as int ?? 0;
+      return exitCode as int? ?? 0;
     } on DerryError catch (error) {
       errorHandler(error);
       return 1;

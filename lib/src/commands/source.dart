@@ -28,7 +28,7 @@ class SourceCommand extends Command {
 
   @override
   Future<void> run() async {
-    final absolute = super.argResults['absolute'];
+    final absolute = super.argResults!['absolute'];
 
     if (absolute as bool) {
       stdout.writeln(p.normalize(File(await findSource()).absolute.path));

@@ -5,21 +5,18 @@ version: 1.2.1
 repository: https://github.com/frencojobs/derry
 
 environment:
-  sdk: '>=2.10.0 <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
 
 executables:
   derry:
 
-dependency_overrides:
-  yaml: ^3.1.0
-  args: ^2.0.0
 dependencies:
   args: ^2.0.0
-  console: ^3.1.0
+  console: ^4.0.0
   equatable: ^2.0.0
   ffi: ^1.0.0
   path: ^1.8.0
-  string_similarity: ^1.1.0
+  string_similarity: ^2.0.0
   yaml: ^3.1.0
 
 dev_dependencies:

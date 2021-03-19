@@ -10,11 +10,11 @@ class Info extends Equatable {
   });
 
   /// The name of the package.
-  final String name;
+  final String? name;
 
   /// The version of the package.
-  final String version;
+  final String? version;
 
   @override
-  List<Object> get props => [name, version];
+  List<Object?> get props => [name, version];
 }

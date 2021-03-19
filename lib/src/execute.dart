@@ -14,10 +14,10 @@ import 'package:derry/src/bindings/executor.dart';
 /// a `boolean` value to decide whether to print output
 /// or not, and a [String] to print before executing the script.
 int execute(
-  Map definitions,
+  Map? definitions,
   String arg, {
-  String extra = '',
-  String infoLine,
+  String? extra = '',
+  String? infoLine,
 }) {
   var hasPre = false, hasPost = false;
 
@@ -59,10 +59,10 @@ int execute(
 }
 
 int _execute(
-  Map definitions,
+  Map? definitions,
   String arg, {
-  String extra = '',
-  String infoLine,
+  String? extra = '',
+  String? infoLine,
 }) {
   final searchResult = search(definitions, arg);
 
@@ -86,17 +86,17 @@ int _execute(
 
   switch (definition.execution) {
     case 'once':
-      final script = definition.scripts.join(' && ');
+      final script = definition.scripts!.join(' && ');
       return executor('$script $extra');
       break;
     case 'multiple':
       var exitCode = 0;
-      for (final script in definition.scripts) {
+      for (final script in definition.scripts!) {
         final sub = subcommand(script);
-        if (sub['command'].isNotEmpty) {
+        if (sub['command']!.isNotEmpty) {
           exitCode = execute(
             definitions,
-            sub['command'],
+            sub['command']!,
             extra: sub['extra'],
           );
         } else {

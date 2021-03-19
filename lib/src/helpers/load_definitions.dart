@@ -5,7 +5,7 @@ import 'package:derry/helpers.dart';
 import 'package:derry/models.dart';
 
 /// Loads scripts from `pubspec.yaml` content.
-Future<Map> loadDefinitions() async {
+Future<Map?> loadDefinitions() async {
   final pubspec = await readPubspec();
   final definitions = pubspec.contents.value['scripts'];
 
@@ -19,7 +19,7 @@ Future<Map> loadDefinitions() async {
     final fileScripts = await readYamlFile(definitions.toString());
 
     if (fileScripts.contents.value is YamlMap) {
-      return fileScripts.contents.value as Map;
+      return fileScripts.contents.value as Map?;
     } else {
       throw const DerryError(type: ErrorType.cpd);
     }

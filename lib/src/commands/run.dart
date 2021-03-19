@@ -39,7 +39,7 @@ class RunCommmand extends Command {
 
   @override
   Future<int> run() async {
-    final parsed = _parseExtras(super.argResults.arguments);
+    final parsed = _parseExtras(super.argResults!.arguments);
     final args = super.argParser.parse(parsed['args'] as Iterable<String>).rest;
     final extra = (parsed['extra'] as List).join(' ');
 

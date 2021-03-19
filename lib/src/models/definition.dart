@@ -16,11 +16,11 @@ class Definition extends Equatable {
   /// Type of execution to be done.
   ///
   /// Possible values are 'multiple' and 'once'.
-  final String execution;
+  final String? execution;
 
   /// Scripts contained in the definition.
-  final List<String> scripts;
+  final List<String>? scripts;
 
   @override
-  List<Object> get props => [execution, scripts];
+  List<Object?> get props => [execution, scripts];
 }

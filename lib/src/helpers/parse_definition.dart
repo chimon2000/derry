@@ -7,7 +7,7 @@ import 'package:derry/models.dart';
 Definition parseDefinition(dynamic input) {
   if (input is YamlMap) {
     return Definition(
-      execution: input.value['(execution)'] as String,
+      execution: input.value['(execution)'] as String?,
       scripts: toList(input.value['(scripts)']),
     );
   } else {

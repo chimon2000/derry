@@ -15,7 +15,7 @@ typedef _Executor = int Function(ffi.Pointer<Utf8>);
 int executor(String input) {
   const rootLibrary = 'package:derry/derry.dart';
   final blobs = cli
-      .waitFor(Isolate.resolvePackageUri(Uri.parse(rootLibrary)))
+      .waitFor(Isolate.resolvePackageUri(Uri.parse(rootLibrary)))!
       .resolve('src/blobs/');
   final objectFile = blobs.resolve(getObject()).toFilePath();
   final dylib = ffi.DynamicLibrary.open(objectFile);
